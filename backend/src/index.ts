@@ -2,6 +2,9 @@ import express from "express";
 import { ENV } from "./config/env.ts";
 import { clerkMiddleware } from '@clerk/express'
 import cors from 'cors'
+import userRouter from './routes/user.routes.ts'
+import productsRouter from './routes/products.routes.ts'
+import commentsRouter from './routes/comments.routes.ts'
 
 const app = express();
 
@@ -12,6 +15,11 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors({
     origin: ENV.CORS_ORIGIN
 }))
+
+
+app.use('/api/user', userRouter);
+app.use('/api/products', productsRouter);
+app.use('/api/comments', commentsRouter);
 
 app.get("/", (req, res) => {
     res.send("Hello World");

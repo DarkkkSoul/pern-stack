@@ -95,23 +95,23 @@ export const deleteProduct = async (id: string) => {
 //  comment queries
 
 export const createComment = async (data: NewComment) => {
-  const [comment] = await db.insert(comments).values(data).returning();
-  return comment;
+    const [comment] = await db.insert(comments).values(data).returning();
+    return comment;
 };
 
 export const deleteComment = async (id: string) => {
-  const existingComment = await getCommentById(id);
-  if (!existingComment) {
-    throw new Error(`Comment with id ${id} not found`);
-  }
+    const existingComment = await getCommentById(id);
+    if (!existingComment) {
+        throw new Error(`Comment with id ${id} not found`);
+    }
 
-  const [comment] = await db.delete(comments).where(eq(comments.id, id)).returning();
-  return comment;
+    const [comment] = await db.delete(comments).where(eq(comments.id, id)).returning();
+    return comment;
 };
 
 export const getCommentById = async (id: string) => {
-  return db.query.comments.findFirst({
-    where: eq(comments.id, id),
-    with: { user: true },
-  });
+    return db.query.comments.findFirst({
+        where: eq(comments.id, id),
+        with: { user: true },
+    });
 };
