@@ -13,7 +13,8 @@ app.use(clerkMiddleware())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({
-    origin: ENV.CORS_ORIGIN
+    origin: ENV.CORS_ORIGIN,
+    credentials: true
 }))
 
 
