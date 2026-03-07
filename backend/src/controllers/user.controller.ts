@@ -22,7 +22,7 @@ export async function SyncUserToDB(req: Request, res: Response) {
         }
 
         const user = query.upsertUser({
-            id: userId,
+            id: userId!,
             name, email, imageUrl
         })
 
