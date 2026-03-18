@@ -11,8 +11,8 @@ function App() {
 
   const { isClerkLoaded, isSignedIn } = useAuthReq();
   useUserSync();
-  console.log(isSignedIn)
   if (!isClerkLoaded) return null;
+ 
   return (
     <div className='min-h-screen bg-base-100'>
       <Navbar />
