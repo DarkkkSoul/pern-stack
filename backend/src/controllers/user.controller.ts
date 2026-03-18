@@ -13,12 +13,12 @@ export async function SyncUserToDB(req: Request, res: Response) {
 
         const { userId } = getAuth(req); // req contains headers to we're sending complete req.
 
-        if (!userId) res.status(400).json({ error: "UNAUTHORIZED ACCESS" })
+        if (!userId) return res.status(400).json({ error: "UNAUTHORIZED ACCESS" })
 
-        const { name, email, imageUrl } = req.body();
+        const { name, email, imageUrl } = req.body;
 
         if (!email || !name || !imageUrl) {
-            res.status(400).json({ error: "Input fields are empty" })
+            return res.status(400).json({ error: "Input fields are empty" })
         }
 
         const user = query.upsertUser({
