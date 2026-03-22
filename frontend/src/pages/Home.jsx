@@ -1,5 +1,4 @@
-import React from 'react'
-import useProducts from '../hooks/useProducts';
+import {useProducts} from '../hooks/useProducts';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { SignInButton } from "@clerk/react";
 import { PackageIcon, SparklesIcon } from 'lucide-react';
@@ -9,13 +8,15 @@ function Home() {
   const { data: products, isLoading, error } = useProducts();
   if (isLoading) return <LoadingSpinner />
 
-  if (error) {
-    return (
-      <div role="alert" className="alert alert-error">
-        <span>Something went wrong. Please refresh the page.</span>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div role="alert" className="alert alert-error">
+  //       <span>Something went wrong. Please refresh the page.</span>
+  //       console.log(error);
+
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className='space-y-8'>
